@@ -1,6 +1,7 @@
 {
   "$schema": "./.vscode/package.schema.json",
-  "name": "stitches",
+  "name": "@sigmacomputing/stitches",
+  "version": "1.2.9",
   "type": "module",
   "license": "MIT",
   "contributors": [
