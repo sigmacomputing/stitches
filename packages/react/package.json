@@ -1,6 +1,6 @@
 {
-  "name": "@stitches/react",
-  "version": "1.3.1-1",
+  "name": "@sigmacomputing/stitches-react",
+  "version": "1.3.1-3",
   "description": "The modern CSS-in-JS library",
   "type": "module",
   "main": "dist/index.cjs",
