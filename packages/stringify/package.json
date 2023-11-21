@@ -34,7 +34,7 @@
     "Abdulhadi Alhallak <abdul@workos.com>"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "keywords": [
     "css-in-js"

@@ -47,7 +47,7 @@
     "react": ">= 16.3.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "keywords": [
     "component",

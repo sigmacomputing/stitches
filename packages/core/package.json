@@ -41,7 +41,7 @@
     "Jonathan Neal"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "keywords": [
     "component",
