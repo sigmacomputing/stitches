@@ -1,6 +1,7 @@
 {
   "$schema": "./.vscode/package.schema.json",
-  "name": "stitches",
+  "name": "@sigmacomputing/stitches",
+  "version": "1.2.9",
   "type": "module",
   "license": "MIT",
   "contributors": [
@@ -9,7 +10,7 @@
     "Jonathan Neal"
   ],
   "scripts": {
-    "build:test:types": "yarn workspace @stitches/test build",
+    "build:test:types": "yarn workspace @sigmacomputing/stitches-test build",
     "build": "node .task/build.js",
     "build:watch": "node .task/build.js --watch",
     "lint": "node .task/lint.js",
