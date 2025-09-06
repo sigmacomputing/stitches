@@ -1,6 +1,6 @@
 // https://github.com/stitchesjs/stitches/issues/813
-import { createStitches } from '@stitches/react'
-import * as Stitches from '@stitches/react'
+import { createStitches } from '@sigmacomputing/stitches-react'
+import * as Stitches from '@sigmacomputing/stitches-react'
 
 export const { config, styled } = createStitches({
 	theme: {

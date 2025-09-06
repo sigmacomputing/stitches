@@ -10,7 +10,7 @@
     "Jonathan Neal"
   ],
   "scripts": {
-    "build:test:types": "yarn workspace @stitches/test build",
+    "build:test:types": "yarn workspace @sigmacomputing/stitches-test build",
     "build": "node .task/build.js",
     "build:watch": "node .task/build.js --watch",
     "lint": "node .task/lint.js",

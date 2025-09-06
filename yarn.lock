@@ -448,6 +448,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sigmacomputing/stitches-core@workspace:packages/core":
+  version: 0.0.0-use.local
+  resolution: "@sigmacomputing/stitches-core@workspace:packages/core"
+  languageName: unknown
+  linkType: soft
+
+"@sigmacomputing/stitches-react@workspace:*, @sigmacomputing/stitches-react@workspace:packages/react":
+  version: 0.0.0-use.local
+  resolution: "@sigmacomputing/stitches-react@workspace:packages/react"
+  dependencies:
+    react: "npm:17.0.2"
+  peerDependencies:
+    react: ">= 16.3.0"
+  languageName: unknown
+  linkType: soft
+
+"@sigmacomputing/stitches-stringify@workspace:packages/stringify":
+  version: 0.0.0-use.local
+  resolution: "@sigmacomputing/stitches-stringify@workspace:packages/stringify"
+  languageName: unknown
+  linkType: soft
+
+"@sigmacomputing/stitches-test@workspace:packages/test":
+  version: 0.0.0-use.local
+  resolution: "@sigmacomputing/stitches-test@workspace:packages/test"
+  dependencies:
+    "@radix-ui/colors": "npm:0.1.7"
+    "@radix-ui/react-dialog": "npm:0.0.20"
+    "@radix-ui/react-polymorphic": "npm:0.0.13"
+    "@sigmacomputing/stitches-react": "workspace:*"
+    "@types/lodash.merge": "npm:4.6.6"
+    "@typescript-eslint/eslint-plugin": "npm:^1.6.0"
+    "@typescript-eslint/parser": "npm:^1.6.0"
+    eslint-config-prettier: "npm:^4.1.0"
+    eslint-config-react: "npm:^1.1.7"
+    eslint-plugin-prettier: "npm:^3.0.1"
+    prettier: "npm:^1.16.4"
+  languageName: unknown
+  linkType: soft
+
 "@sindresorhus/is@npm:^0.14.0":
   version: 0.14.0
   resolution: "@sindresorhus/is@npm:0.14.0"
@@ -466,55 +506,6 @@ __metadata:
   checksum: 10c0/083cdb056687123ec1d5e1623226856765fe50dcb167eb80da4451b941fff4e66a18c834eca18deb8fd3a857d22d0aa3f71d3e3445de96ee5e6630d3f56d1cdd
   languageName: node
   linkType: hard
-
-"@stitches/core@workspace:packages/core":
-  version: 0.0.0-use.local
-  resolution: "@stitches/core@workspace:packages/core"
-  languageName: unknown
-  linkType: soft
-
-"@stitches/react@npm:1.3.1-0":
-  version: 1.3.1-0
-  resolution: "@stitches/react@npm:1.3.1-0"
-  peerDependencies:
-    react: ">= 16.3.0"
-  checksum: 10c0/76b7873d26d41588b7cec725adf9e367a0baf68229547fe6a08834291be3fe78b6f27f5ea09d6c698153a87dc0c1537c2d8eb0ef740ff1157d785ee97f90e221
-  languageName: node
-  linkType: hard
-
-"@stitches/react@workspace:packages/react":
-  version: 0.0.0-use.local
-  resolution: "@stitches/react@workspace:packages/react"
-  dependencies:
-    react: "npm:17.0.2"
-  peerDependencies:
-    react: ">= 16.3.0"
-  languageName: unknown
-  linkType: soft
-
-"@stitches/stringify@workspace:packages/stringify":
-  version: 0.0.0-use.local
-  resolution: "@stitches/stringify@workspace:packages/stringify"
-  languageName: unknown
-  linkType: soft
-
-"@stitches/test@workspace:packages/test":
-  version: 0.0.0-use.local
-  resolution: "@stitches/test@workspace:packages/test"
-  dependencies:
-    "@radix-ui/colors": "npm:0.1.7"
-    "@radix-ui/react-dialog": "npm:0.0.20"
-    "@radix-ui/react-polymorphic": "npm:0.0.13"
-    "@stitches/react": "npm:1.3.1-0"
-    "@types/lodash.merge": "npm:4.6.6"
-    "@typescript-eslint/eslint-plugin": "npm:^1.6.0"
-    "@typescript-eslint/parser": "npm:^1.6.0"
-    eslint-config-prettier: "npm:^4.1.0"
-    eslint-config-react: "npm:^1.1.7"
-    eslint-plugin-prettier: "npm:^3.0.1"
-    prettier: "npm:^1.16.4"
-  languageName: unknown
-  linkType: soft
 
 "@szmarczak/http-timer@npm:^1.1.2":
   version: 1.1.2
