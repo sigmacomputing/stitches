@@ -3,6 +3,7 @@
   "name": "stitches",
   "type": "module",
   "license": "MIT",
+  "packageManager": "yarn@4.9.4",
   "contributors": [
     "Pedro Duarte",
     "Abdulhadi Alhallak <abdul@workos.com>",

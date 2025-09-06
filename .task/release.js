@@ -17,7 +17,7 @@ const main = async () => {
 
 	if (!q1option.has(state.release)) return
 
-	await cp.spawn('npm', ['version', state.release, '--workspaces'], { stdio: 'pipe' })
+	await cp.spawn('yarn', ['version', state.release], { stdio: 'pipe' })
 
 	const workspacepkgpaths = new Set
 	const workspacetags = new Set
@@ -46,11 +46,7 @@ const main = async () => {
 		return
 	}
 
-	await cp.spawn('npm', ['run', 'build'], { stdio: 'ignore' })
-
-	state.otp = await rl.question(`OTP:`)
-
-	if (!state.otp) return
+	await cp.spawn('yarn', ['build'], { stdio: 'ignore' })
 
 	for (const workspacepkgpath of workspacepkgpaths) {
 		await cp.spawn('git', ['add', workspacepkgpath.ospathname])
@@ -61,7 +57,7 @@ const main = async () => {
 	await cp.spawn('git', ['push'])
 	await cp.spawn('git', ['push', '--tags'])
 
-	await cp.spawn('npm', ['publish', '--tag', state.npmtag, '--workspaces', '--otp', state.otp])
+	await cp.spawn('yarn', ['workspaces', 'foreach', '--no-private', 'npm', 'publish', '--tag', state.npmtag])
 }
 
 main()
