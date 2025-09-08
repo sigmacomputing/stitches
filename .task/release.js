@@ -17,7 +17,7 @@ const main = async () => {
 
 	if (!q1option.has(state.release)) return
 
-	await cp.spawn('yarn', ['workspaces', 'foreach', '-A', 'version', state.release, '--immediate'], { stdio: 'pipe' })
+	await cp.spawn('yarn', ['workspaces', 'foreach', '-A', '--exclude', 'stitches', 'version', state.release, '--immediate'], { stdio: 'pipe' })
 
 	const workspacepkgpaths = new Set
 	const workspacetags = new Set
@@ -55,7 +55,7 @@ const main = async () => {
 	await cp.spawn('git', ['commit', '-m', state.version])
 	await cp.spawn('git', ['push'])
 
-	await cp.spawn('yarn', ['workspaces', 'foreach', '-A', '--no-private', 'npm', 'publish', '--tag', state.npmtag])
+	await cp.spawn('yarn', ['workspaces', 'foreach', '-A', '--exclude', 'stitches', '--no-private', 'npm', 'publish', '--tag', state.npmtag])
 }
 
 main()
