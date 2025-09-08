@@ -1,6 +1,6 @@
 {
   "name": "@sigmacomputing/stitches-react",
-  "version": "1.3.2-0",
+  "version": "1.3.2",
   "description": "The modern CSS-in-JS library",
   "type": "module",
   "main": "dist/index.cjs",
@@ -47,7 +47,7 @@
     "react": ">= 16.3.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "keywords": [
     "component",
@@ -90,6 +90,5 @@
     "preact",
     "react",
     "tsx"
-  ],
-  "stableVersion": "1.3.1-1"
+  ]
 }
