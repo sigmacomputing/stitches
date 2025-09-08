@@ -10,14 +10,14 @@ const main = async () => {
 
 	const state = {}
 
-	const q1option = new Set(['major', 'minor', 'patch', 'prerelease'])
+	const q1option = new Set(['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'])
 
-	state.release = await rl.question(`Release Type ${co.dim('(major, minor, patch, prerelease)')}:`)
-	state.npmtag = state.release === 'prerelease' ? 'canary' : 'latest'
+	state.release = await rl.question(`Release Type ${co.dim('(major, minor, patch, premajor, preminor, prepatch, prerelease)')}:`)
+	state.npmtag = state.release.startsWith('pre') ? 'canary' : 'latest'
 
 	if (!q1option.has(state.release)) return
 
-	await cp.spawn('yarn', ['version', state.release], { stdio: 'pipe' })
+	await cp.spawn('yarn', ['workspaces', 'foreach', '-A', '--no-private', 'version', state.release, '--immediate'], { stdio: 'pipe' })
 
 	const workspacepkgpaths = new Set
 	const workspacetags = new Set
@@ -53,11 +53,9 @@ const main = async () => {
 	}
 
 	await cp.spawn('git', ['commit', '-m', state.version])
-	await cp.spawn('git', ['tag', state.version])
 	await cp.spawn('git', ['push'])
-	await cp.spawn('git', ['push', '--tags'])
 
-	await cp.spawn('yarn', ['workspaces', 'foreach', '--no-private', 'npm', 'publish', '--tag', state.npmtag])
+	await cp.spawn('yarn', ['workspaces', 'foreach', '-A', '--no-private', 'npm', 'publish', '--tag', state.npmtag])
 }
 
 main()
