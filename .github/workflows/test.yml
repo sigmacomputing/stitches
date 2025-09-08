@@ -1,14 +1,22 @@
 name: CI
-on: push
+on:
+  push:
+    branches:
+      - canary
+      - main
+  pull_request:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - name: Enable Corepack
+        run: corepack enable && yarn --version
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
+          cache: 'yarn'
       - name: Install modules
-        run: yarn
+        run: yarn install --immutable
       - name: Run tests
         run: yarn test

@@ -3,13 +3,14 @@
   "name": "stitches",
   "type": "module",
   "license": "MIT",
+  "packageManager": "yarn@4.9.4",
   "contributors": [
     "Pedro Duarte",
     "Abdulhadi Alhallak <abdul@workos.com>",
     "Jonathan Neal"
   ],
   "scripts": {
-    "build:test:types": "yarn workspace @stitches/test build",
+    "build:test:types": "yarn workspace @sigmacomputing/stitches-test build",
     "build": "node .task/build.js",
     "build:watch": "node .task/build.js --watch",
     "lint": "node .task/lint.js",
