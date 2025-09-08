@@ -17,7 +17,7 @@ const main = async () => {
 
 	if (!q1option.has(state.release)) return
 
-	await cp.spawn('yarn', ['workspaces', 'foreach', '-A', '--no-private', 'version', state.release, '--immediate'], { stdio: 'pipe' })
+	await cp.spawn('yarn', ['workspaces', 'foreach', '-A', 'version', state.release, '--immediate'], { stdio: 'pipe' })
 
 	const workspacepkgpaths = new Set
 	const workspacetags = new Set
