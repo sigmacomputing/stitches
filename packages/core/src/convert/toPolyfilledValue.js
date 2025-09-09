@@ -1,6 +1,3 @@
-const splitBySpace = /\s+(?![^()]*\))/
-const split = (fn) => (data) => fn(...(typeof data === 'string' ? String(data).split(splitBySpace) : [data]))
-
 export const toPolyfilledValue = {
 	// prefixed properties
 	appearance: (d) => ({ WebkitAppearance: d, appearance: d }),
@@ -15,12 +12,4 @@ export const toPolyfilledValue = {
 	maskSize: (d) => ({ WebkitMaskSize: d, maskSize: d }),
 	textSizeAdjust: (d) => ({ WebkitTextSizeAdjust: d, textSizeAdjust: d }),
 	userSelect: (d) => ({ WebkitUserSelect: d, userSelect: d }),
-
-	// logical properties
-	marginBlock: split((s, e) => ({ marginBlockStart: s, marginBlockEnd: e || s })),
-	marginInline: split((s, e) => ({ marginInlineStart: s, marginInlineEnd: e || s })),
-	maxSize: split((b, i) => ({ maxBlockSize: b, maxInlineSize: i || b })),
-	minSize: split((b, i) => ({ minBlockSize: b, minInlineSize: i || b })),
-	paddingBlock: split((s, e) => ({ paddingBlockStart: s, paddingBlockEnd: e || s })),
-	paddingInline: split((s, e) => ({ paddingInlineStart: s, paddingInlineEnd: e || s })),
 }
