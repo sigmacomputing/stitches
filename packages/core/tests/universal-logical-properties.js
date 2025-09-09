@@ -9,7 +9,7 @@ describe('Logical Properties', () => {
 				marginBlock: 0,
 			},
 			'y-element': {
-				marginBlock: 10,
+				marginBlock: '10px !important',
 			},
 			'z-element': {
 				marginBlock: '5px 10px',
@@ -17,10 +17,10 @@ describe('Logical Properties', () => {
 		})()
 
 		expect(toString()).toBe(
-			`--sxs{--sxs:1 IvBLl}@media{` +
-				`x-element{margin-block-start:0;margin-block-end:0}` +
-				`y-element{margin-block-start:10px;margin-block-end:10px}` +
-				`z-element{margin-block-start:5px;margin-block-end:10px}` +
+			`--sxs{--sxs:1 fXyjwi}@media{` +
+				`x-element{margin-block:0}` +
+				`y-element{margin-block:10px !important}` +
+				`z-element{margin-block:5px 10px}` +
 			`}`
 		)
 	})
@@ -33,7 +33,7 @@ describe('Logical Properties', () => {
 				marginInline: 0,
 			},
 			'y-element': {
-				marginInline: 10,
+				marginInline: '10px !important',
 			},
 			'z-element': {
 				marginInline: '5px 10px',
@@ -41,10 +41,10 @@ describe('Logical Properties', () => {
 		})()
 
 		expect(toString()).toBe(
-			`--sxs{--sxs:1 eNPHKF}@media{` +
-				`x-element{margin-inline-start:0;margin-inline-end:0}` +
-				`y-element{margin-inline-start:10px;margin-inline-end:10px}` +
-				`z-element{margin-inline-start:5px;margin-inline-end:10px}` +
+			`--sxs{--sxs:1 ghnYnm}@media{` +
+				`x-element{margin-inline:0}` +
+				`y-element{margin-inline:10px !important}` +
+				`z-element{margin-inline:5px 10px}` +
 			`}`
 		)
 	})
@@ -57,7 +57,7 @@ describe('Logical Properties', () => {
 				paddingBlock: 0,
 			},
 			'y-element': {
-				paddingBlock: 10,
+				paddingBlock: '10px !important',
 			},
 			'z-element': {
 				paddingBlock: '5px 10px',
@@ -65,10 +65,10 @@ describe('Logical Properties', () => {
 		})()
 
 		expect(toString()).toBe(
-			`--sxs{--sxs:1 kcHEgy}@media{` +
-				`x-element{padding-block-start:0;padding-block-end:0}` +
-				`y-element{padding-block-start:10px;padding-block-end:10px}` +
-				`z-element{padding-block-start:5px;padding-block-end:10px}` +
+			`--sxs{--sxs:1 gDAiNt}@media{` +
+				`x-element{padding-block:0}` +
+				`y-element{padding-block:10px !important}` +
+				`z-element{padding-block:5px 10px}` +
 			`}`
 		)
 	})
@@ -81,7 +81,7 @@ describe('Logical Properties', () => {
 				paddingInline: 0,
 			},
 			'y-element': {
-				paddingInline: 10,
+				paddingInline: '10px !important',
 			},
 			'z-element': {
 				paddingInline: '5px 10px',
@@ -89,10 +89,10 @@ describe('Logical Properties', () => {
 		})()
 
 		expect(toString()).toBe(
-			`--sxs{--sxs:1 cVrbiG}@media{` +
-				`x-element{padding-inline-start:0;padding-inline-end:0}` +
-				`y-element{padding-inline-start:10px;padding-inline-end:10px}` +
-				`z-element{padding-inline-start:5px;padding-inline-end:10px}` +
+			`--sxs{--sxs:1 geOKtd}@media{` +
+				`x-element{padding-inline:0}` +
+				`y-element{padding-inline:10px !important}` +
+				`z-element{padding-inline:5px 10px}` +
 			`}`
 		)
 	})
