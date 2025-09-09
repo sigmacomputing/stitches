@@ -89,14 +89,20 @@ export const defaultThemeMap = {
 	borderImage: colors,
 	border: colors,
 	borderBlock: colors,
+	borderBlockColor: colors,
 	borderBlockEnd: colors,
+	borderBlockEndColor: colors,
 	borderBlockStart: colors,
+	borderBlockStartColor: colors,
 	borderBottom: colors,
 	borderBottomColor: colors,
 	borderColor: colors,
 	borderInline: colors,
+	borderInlineColor: colors,
 	borderInlineEnd: colors,
+	borderInlineEndColor: colors,
 	borderInlineStart: colors,
+	borderInlineStartColor: colors,
 	borderLeft: colors,
 	borderLeftColor: colors,
 	borderRight: colors,
@@ -137,22 +143,38 @@ export const defaultThemeMap = {
 	gridTemplateRows: sizes,
 
 	borderWidth: borderWidths,
-	borderTopWidth: borderWidths,
-	borderRightWidth: borderWidths,
+	borderBlockEndWidth: borderWidths,
+	borderBlockStartWidth: borderWidths,
+	borderBlockWidth: borderWidths,
 	borderBottomWidth: borderWidths,
+	borderInlineEndWidth: borderWidths,
+	borderInlineStartWidth: borderWidths,
+	borderInlineWidth: borderWidths,
 	borderLeftWidth: borderWidths,
+	borderRightWidth: borderWidths,
+	borderTopWidth: borderWidths,
 
 	borderStyle: borderStyles,
-	borderTopStyle: borderStyles,
-	borderRightStyle: borderStyles,
+	borderBlockEndStyle: borderStyles,
+	borderBlockStartStyle: borderStyles,
+	borderBlockStyle: borderStyles,
 	borderBottomStyle: borderStyles,
+	borderInlineEndStyle: borderStyles,
+	borderInlineStartStyle: borderStyles,
+	borderInlineStyle: borderStyles,
 	borderLeftStyle: borderStyles,
+	borderRightStyle: borderStyles,
+	borderTopStyle: borderStyles,
 
 	borderRadius: radii,
+	borderBottomLeftRadius: radii,
+	borderBottomRightRadius: radii,
+	borderEndEndRadius: radii,
+	borderEndStartRadius: radii,
+	borderStartEndRadius: radii,
+	borderStartStartRadius: radii,
 	borderTopLeftRadius: radii,
 	borderTopRightRadius: radii,
-	borderBottomRightRadius: radii,
-	borderBottomLeftRadius: radii,
 
 	boxShadow: shadows,
 	textShadow: shadows,
@@ -237,14 +259,20 @@ export const defaultThemeMap = {
  * @property {colors} backgroundImage
  * @property {colors} border
  * @property {colors} borderBlock
+ * @property {colors} borderBlockColor
  * @property {colors} borderBlockEnd
+ * @property {colors} borderBlockEndColor
  * @property {colors} borderBlockStart
+ * @property {colors} borderBlockStartColor
  * @property {colors} borderBottom
  * @property {colors} borderBottomColor
  * @property {colors} borderColor
  * @property {colors} borderInline
+ * @property {colors} borderInlineColor
  * @property {colors} borderInlineEnd
+ * @property {colors} borderInlineEndColor
  * @property {colors} borderInlineStart
+ * @property {colors} borderInlineStartColor
  * @property {colors} borderLeft
  * @property {colors} borderLeftColor
  * @property {colors} borderRight
@@ -285,22 +313,38 @@ export const defaultThemeMap = {
  * @property {sizes} gridTemplateRows
 
  * @property {borderWidths} borderWidth
- * @property {borderWidths} borderTopWidth
- * @property {borderWidths} borderRightWidth
+ * @property {borderWidths} borderBlockEndWidth
+ * @property {borderWidths} borderBlockStartWidth
+ * @property {borderWidths} borderBlockWidth
  * @property {borderWidths} borderBottomWidth
+ * @property {borderWidths} borderInlineEndWidth
+ * @property {borderWidths} borderInlineStartWidth
+ * @property {borderWidths} borderInlineWidth
  * @property {borderWidths} borderLeftWidth
+ * @property {borderWidths} borderRightWidth
+ * @property {borderWidths} borderTopWidth
 
  * @property {borderStyles} borderStyle
- * @property {borderStyles} borderTopStyle
- * @property {borderStyles} borderRightStyle
+ * @property {borderStyles} borderBlockEndStyle
+ * @property {borderStyles} borderBlockStartStyle
+ * @property {borderStyles} borderBlockStyle
  * @property {borderStyles} borderBottomStyle
+ * @property {borderStyles} borderInlineEndStyle
+ * @property {borderStyles} borderInlineStartStyle
+ * @property {borderStyles} borderInlineStyle
  * @property {borderStyles} borderLeftStyle
+ * @property {borderStyles} borderRightStyle
+ * @property {borderStyles} borderTopStyle
 
  * @property {radii} borderRadius
+ * @property {radii} borderBottomLeftRadius
+ * @property {radii} borderBottomRightRadius
+ * @property {radii} borderEndEndRadius
+ * @property {radii} borderEndStartRadius
+ * @property {radii} borderStartEndRadius
+ * @property {radii} borderStartStartRadius
  * @property {radii} borderTopLeftRadius
  * @property {radii} borderTopRightRadius
- * @property {radii} borderBottomRightRadius
- * @property {radii} borderBottomLeftRadius
 
  * @property {shadows} boxShadow
  * @property {shadows} textShadow
