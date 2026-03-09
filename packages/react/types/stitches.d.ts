@@ -6,10 +6,10 @@ import type * as Util from './util'
 /** Remove an index signature from a type */
 export type RemoveIndex<T> = {[k in keyof T as string extends k ? never : number extends k ? never : k]: T[k]}
 
-export interface CssFunctionType<Media extends {} = {}, Theme extends {} = {}, ThemeMap extends {} = {}, Utils extends {} = {}> {
+export interface CssFunctionType<Theme extends {} = {}, ThemeMap extends {} = {}, Utils extends {} = {}> {
 	<Composers extends (string | Util.Function | {
 		[name: string]: unknown
-	})[], CSS = CSSUtil.CSS<Media, Theme, ThemeMap, Utils>>(...composers: {
+	})[], CSS = CSSUtil.CSS<Theme, ThemeMap, Utils>>(...composers: {
 		[K in keyof Composers]: (
 			// Strings and Functions can be skipped over
 			string extends Composers[K] ? Composers[K] : Composers[K] extends string | Util.Function ? Composers[K] : RemoveIndex<CSS> & {
@@ -41,13 +41,13 @@ export interface CssFunctionType<Media extends {} = {}, Theme extends {} = {}, T
 			} & CSS & {
 				[K2 in keyof Composers[K]]: K2 extends 'compoundVariants' | 'defaultVariants' | 'variants' ? unknown : K2 extends keyof CSS ? CSS[K2] : unknown
 			})
-	}): StyledComponent.CssComponent<StyledComponent.StyledComponentType<Composers>, StyledComponent.StyledComponentProps<Composers>, Media, CSS>
+	}): StyledComponent.CssComponent<StyledComponent.StyledComponentType<Composers>, StyledComponent.StyledComponentProps<Composers>, CSS>
 }
 
-export interface StyledFunctionType<Media extends {} = {}, Theme extends {} = {}, ThemeMap extends {} = {}, Utils extends {} = {}> {
+export interface StyledFunctionType<Theme extends {} = {}, ThemeMap extends {} = {}, Utils extends {} = {}> {
 	<Type extends keyof JSX.IntrinsicElements | React.ComponentType<any> | Util.Function, Composers extends (string | React.ComponentType<any> | Util.Function | {
 		[name: string]: unknown
-	})[], CSS = CSSUtil.CSS<Media, Theme, ThemeMap, Utils>>(type: Type, ...composers: {
+	})[], CSS = CSSUtil.CSS<Theme, ThemeMap, Utils>>(type: Type, ...composers: {
 		[K in keyof Composers]: (
 			// Strings, React Components, and Functions can be skipped over
 			string extends Composers[K] ? Composers[K] : Composers[K] extends string | React.ComponentType<any> | Util.Function ? Composers[K] : RemoveIndex<CSS> & {
@@ -79,7 +79,7 @@ export interface StyledFunctionType<Media extends {} = {}, Theme extends {} = {}
 			} & CSS & {
 				[K2 in keyof Composers[K]]: K2 extends 'compoundVariants' | 'defaultVariants' | 'variants' ? unknown : K2 extends keyof CSS ? CSS[K2] : unknown
 			})
-	}): StyledComponent.StyledComponent<Type, StyledComponent.StyledComponentProps<Composers>, Media, CSSUtil.CSS<Media, Theme, ThemeMap, Utils>>
+	}): StyledComponent.StyledComponent<Type, StyledComponent.StyledComponentProps<Composers>, CSSUtil.CSS<Theme, ThemeMap, Utils>>
 }
 
 /** Stitches interface. */
@@ -120,11 +120,11 @@ export default interface Stitches<
 							? CSSUtil.Native.AtRule.FontFace | Array<CSSUtil.Native.AtRule.FontFace>
 						: K extends `@keyframes ${string}`
 							? {
-								[KeyFrame in string]: CSSUtil.CSS<Media, Theme, ThemeMap, Utils>
+								[KeyFrame in string]: CSSUtil.CSS<Theme, ThemeMap, Utils>
 							}
 						: K extends `@property ${string}`
 							? CSSUtil.Native.AtRule.Property
-						: CSSUtil.CSS<Media, Theme, ThemeMap, Utils>
+						: CSSUtil.CSS<Theme, ThemeMap, Utils>
 					)
 				}
 			)[]
@@ -134,7 +134,7 @@ export default interface Stitches<
 	},
 	keyframes: {
 		(style: {
-			[offset: string]: CSSUtil.CSS<Media, Theme, ThemeMap, Utils>
+			[offset: string]: CSSUtil.CSS<Theme, ThemeMap, Utils>
 		}): {
 			(): string
 			name: string
@@ -212,15 +212,15 @@ export default interface Stitches<
       componentId?: string
       displayName?: string
       shouldForwardStitchesProp?: (prop: 'css' | (string & {})) => boolean | void
-    }) => CssFunctionType<Media, Theme, ThemeMap, Utils>
-  } & CssFunctionType<Media, Theme, ThemeMap, Utils>
+    }) => CssFunctionType<Theme, ThemeMap, Utils>
+  } & CssFunctionType<Theme, ThemeMap, Utils>
 	styled: {
 		withConfig: (config: {
 			componentId?: string
 			displayName?: string
 			shouldForwardStitchesProp?: (prop: 'css' | (string & {})) => boolean | void
-		}) => StyledFunctionType<Media, Theme, ThemeMap, Utils>
-	} & StyledFunctionType<Media, Theme, ThemeMap, Utils>
+		}) => StyledFunctionType<Theme, ThemeMap, Utils>
+	} & StyledFunctionType<Theme, ThemeMap, Utils>
 }
 
 type ThemeTokens<Values, Prefix> = {

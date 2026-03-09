@@ -14,17 +14,12 @@ type TokenByPropertyName<PropertyName, Theme, ThemeMap> = PropertyName extends k
 
 type TokenByScaleName<ScaleName, Theme> = ScaleName extends keyof Theme ? Util.Prefixed<'$', keyof Theme[ScaleName]> : never
 
-/** Returns a Style interface, leveraging the given media and style map. */
+/** Returns a Style interface, leveraging the given style map. */
 export type CSS<
-	Media = {},
 	Theme = {},
 	ThemeMap = Config.DefaultThemeMap,
 	Utils = {},
 > = (
-	// nested at-rule css styles
-	& {
-		[K in Util.Prefixed<'@', keyof Media>]?: CSS<Media, Theme, ThemeMap, Utils>
-	}
 	// known property styles
 	& {
 		[K in keyof CSSProperties as K extends keyof Utils ? never : K]?: (
@@ -95,7 +90,7 @@ export type CSS<
 		[K: string]: (
 			| number
 			| string
-			| CSS<Media, Theme, ThemeMap, Utils>
+			| CSS<Theme, ThemeMap, Utils>
 			| {}
 			| undefined
 		)
