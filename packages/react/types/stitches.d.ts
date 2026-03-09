@@ -83,7 +83,7 @@ export interface StyledFunctionType<Theme extends {} = {}, ThemeMap extends {} =
 }
 
 /** Stitches interface. */
-export default interface Stitches<
+export interface Stitches<
 	Prefix extends string = '',
 	Media extends {} = {},
 	Theme extends {} = {},

@@ -1,8 +1,8 @@
 import type * as CSSUtil from './css-util.js'
-import type Stitches from './stitches.js'
+import type { Stitches } from './stitches.js'
 
 /** Configuration Interface */
-declare namespace ConfigType {
+export declare namespace ConfigType {
 	/** Prefix interface. */
 	export type Prefix<T = ''> = T extends string ? T: string
 
