@@ -4,12 +4,10 @@ import type * as Util from './util.js'
 export interface CssComponent<
 	Type = 'span',
 	Props = {},
-	Media = {},
 	CSS = {}
 > {
 	(
 		props?:
-			& TransformProps<Props, Media>
 			& {
 				css?: CSS
 			}
@@ -27,21 +25,6 @@ export interface CssComponent<
 
 	[$$StyledComponentType]: Type
 	[$$StyledComponentProps]: Props
-	[$$StyledComponentMedia]: Media
-}
-
-export type TransformProps<Props, Media> = {
-	[K in keyof Props]: (
-		| Props[K]
-		| (
-			& {
-				[KMedia in Util.Prefixed<'@', 'initial' | keyof Media>]?: Props[K]
-			}
-			& {
-				[KMedia in string]: Props[K]
-			}
-		)
-	)
 }
 
 /** Unique symbol used to reference the type of a Styled Component. */
@@ -55,12 +38,6 @@ export declare const $$StyledComponentProps: unique symbol
 
 /** Unique symbol used to reference the props of a Styled Component. */
 export type $$StyledComponentProps = typeof $$StyledComponentProps
-
-/** Unique symbol used to reference the media passed into a Styled Component. */
-export declare const $$StyledComponentMedia: unique symbol
-
-/** Unique symbol used to reference the media passed into a Styled Component. */
-export type $$StyledComponentMedia = typeof $$StyledComponentMedia
 
 /** Returns the first Styled Component type from the given array of compositions. */
 export type StyledComponentType<T extends any[]> = (

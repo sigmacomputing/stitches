@@ -8,14 +8,13 @@ export type IntrinsicElementsKeys = keyof JSX.IntrinsicElements;
 export interface StyledComponent<
 	Type = 'span',
 	Props = {},
-	Media = {},
 	CSS = {}
 > extends React.ForwardRefExoticComponent<
 	Util.Assign<
 		Type extends IntrinsicElementsKeys | React.ComponentType<any>
 			? React.ComponentPropsWithRef<Type>
 		: never,
-		TransformProps<Props, Media> & { css?: CSS }
+		Props & { css?: CSS }
 	>
 > {
 	(
@@ -23,7 +22,7 @@ export interface StyledComponent<
 			Type extends IntrinsicElementsKeys | React.ComponentType<any>
 				? React.ComponentPropsWithRef<Type>
 			: {},
-			TransformProps<Props, Media> & {
+			Props & {
 				as?: never,
 				css?: CSS
 			}
@@ -33,11 +32,11 @@ export interface StyledComponent<
 	<
 		C extends CSS,
 		As extends string | React.ComponentType<any> = Type extends string | React.ComponentType<any> ? Type : any,
-		InnerProps = Type extends StyledComponent<any, infer IP, any, any> ? IP : {},
+		InnerProps = Type extends StyledComponent<any, infer IP, any> ? IP : {},
 	>(
 		props: Util.Assign<
 			React.ComponentPropsWithRef<As extends IntrinsicElementsKeys | React.ComponentType<any> ? As : never>,
-			TransformProps<Util.Assign<InnerProps, Props>, Media> & {
+			Util.Assign<InnerProps, Props> & {
 				as?: As,
 				css?: {
 					[K in keyof C]: K extends keyof CSS ? CSS[K] : never
@@ -51,19 +50,16 @@ export interface StyledComponent<
 
 	[$$StyledComponentType]: Type
 	[$$StyledComponentProps]: Props
-	[$$StyledComponentMedia]: Media
 }
 
 /** Returns a new CSS Component. */
 export interface CssComponent<
 	Type = 'span',
 	Props = {},
-	Media = {},
 	CSS = {}
 > {
 	(
 		props?:
-			& TransformProps<Props, Media>
 			& {
 				css?: CSS
 			}
@@ -81,21 +77,6 @@ export interface CssComponent<
 
 	[$$StyledComponentType]: Type
 	[$$StyledComponentProps]: Props
-	[$$StyledComponentMedia]: Media
-}
-
-export type TransformProps<Props, Media> = {
-	[K in keyof Props]: (
-		| Props[K]
-		| (
-			& {
-				[KMedia in Util.Prefixed<'@', 'initial' | keyof Media>]?: Props[K]
-			}
-			& {
-				[KMedia in string]: Props[K]
-			}
-		)
-	)
 }
 
 /** Unique symbol used to reference the type of a Styled Component. */
@@ -109,12 +90,6 @@ export declare const $$StyledComponentProps: unique symbol
 
 /** Unique symbol used to reference the props of a Styled Component. */
 export type $$StyledComponentProps = typeof $$StyledComponentProps
-
-/** Unique symbol used to reference the media passed into a Styled Component. */
-export declare const $$StyledComponentMedia: unique symbol
-
-/** Unique symbol used to reference the media passed into a Styled Component. */
-export type $$StyledComponentMedia = typeof $$StyledComponentMedia
 
 /** Returns a narrowed JSX element from the given tag name. */
 type IntrinsicElement<TagName> = TagName extends IntrinsicElementsKeys ? TagName : never

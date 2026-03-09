@@ -24,7 +24,6 @@ export type CSS<
 		utils: {}
 	}
 > = CSSUtil.CSS<
-	Config['media'],
 	Config['theme'],
 	Config['themeMap'],
 	Config['utils']
@@ -39,7 +38,6 @@ export type PropertyValue<Property extends keyof CSSUtil.CSSProperties, Config =
 		? CSSUtil.WithPropertyValue<Property>
 	: Config extends { [K: string]: any }
 		? CSSUtil.CSS<
-			Config['media'],
 			Config['theme'],
 			Config['themeMap'],
 			Config['utils']
@@ -59,7 +57,7 @@ export type ScaleValue<Scale, Config = null> = (
 )
 
 /** Returns a type that suggests variants from a component as possible prop values. */
-export type VariantProps<Component extends {[key: symbol | string]: any}> = StyledComponent.TransformProps<Component[StyledComponent.$$StyledComponentProps], Component[StyledComponent.$$StyledComponentMedia]>
+export type VariantProps<Component extends {[key: symbol | string]: any}> = Component[StyledComponent.$$StyledComponentProps];
 
 /** Map of CSS properties to token scales. */
 export declare const defaultThemeMap: DefaultThemeMap
