@@ -1,14 +1,17 @@
-import type Stitches from './stitches.js'
-
 import type * as Config from './config.js'
 import type * as CSSUtil from './css-util.js'
 import type * as StyledComponent from './styled-component.js'
+import type * as Core from './stitches.js'
 
+export type { Property } from './css.js'
 export { $$PropertyValue, $$ScaleValue, $$ThemeValue} from './css-util.js'
+export type { CssComponent }  from './styled-component.js'
+
 export type CreateStitches = Config.CreateStitches
 export type CSSProperties = CSSUtil.CSSProperties
 export type DefaultThemeMap = Config.DefaultThemeMap
 export type FontFace = CSSUtil.Native.AtRule.FontFace
+export type Stitches = Core.Stitches
 
 /** Returns a Style interface from a configuration, leveraging the given media and style map. */
 export type CSS<
