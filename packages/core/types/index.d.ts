@@ -3,15 +3,16 @@ import type * as CSSUtil from './css-util.js'
 import type * as StyledComponent from './styled-component.js'
 import type * as Core from './stitches.js'
 
+export type { ConfigType } from './config.js';
 export type { Property } from './css.js'
-export { $$PropertyValue, $$ScaleValue, $$ThemeValue} from './css-util.js'
+export type { $$PropertyValue, $$ScaleValue, $$ThemeValue} from './css-util.js'
+export type { Stitches } from './stitches.js'
 export type { CssComponent }  from './styled-component.js'
 
 export type CreateStitches = Config.CreateStitches
 export type CSSProperties = CSSUtil.CSSProperties
 export type DefaultThemeMap = Config.DefaultThemeMap
 export type FontFace = CSSUtil.Native.AtRule.FontFace
-export type Stitches = Core.Stitches
 
 /** Returns a Style interface from a configuration, leveraging the given media and style map. */
 export type CSS<
@@ -69,13 +70,13 @@ export declare const defaultThemeMap: DefaultThemeMap
 export declare const createStitches: CreateStitches
 
 /** Returns an object representing a theme. */
-export declare const createTheme: Stitches['createTheme']
+export declare const createTheme: Core.Stitches['createTheme']
 
 /** Returns a function that applies globalCss styles. */
-export declare const globalCss: Stitches['globalCss']
+export declare const globalCss: Core.Stitches['globalCss']
 
 /** Returns an object that applies `@keyframes` styles. */
-export declare const keyframes: Stitches['keyframes']
+export declare const keyframes: Core.Stitches['keyframes']
 
 /** Returns a function that applies styles and variants for a specific class. */
-export declare const css: Stitches['css']
+export declare const css: Core.Stitches['css']
