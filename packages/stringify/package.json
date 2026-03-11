@@ -5,7 +5,7 @@
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "typings": "types/index.d.ts",
+  "types": "types/index.d.ts",
   "jsdelivr": "dist/index.global.js",
   "unpkg": "dist/index.global.js",
   "exports": {
