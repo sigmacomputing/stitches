@@ -208,7 +208,7 @@ describe('Basic', () => {
 		const cssString1of1 = getCssText()
 
 		expect(className1of1).toBe('c-elRGCe')
-		expect(cssString1of1).toBe(`--sxs{--sxs:2 c-elRGCe}@media{.c-elRGCe{---brand:500px;width:var(---brand)}}`)
+		expect(cssString1of1).toBe(`--sxs{--sxs:2 c-elRGCe}@media{.c-elRGCe{--sxs-brand:500px;width:var(--sxs-brand)}}`)
 	})
 
 	test('Functionality of stringification — local tokens prefixed', () => {
@@ -225,7 +225,7 @@ describe('Basic', () => {
 		const cssString1of1 = getCssText()
 
 		expect(className1of1).toBe('fusion-c-elRGCe')
-		expect(cssString1of1).toBe(`--sxs{--sxs:2 fusion-c-elRGCe}@media{.fusion-c-elRGCe{--fusion--brand:500px;width:var(--fusion--brand)}}`)
+		expect(cssString1of1).toBe(`--sxs{--sxs:2 fusion-c-elRGCe}@media{.fusion-c-elRGCe{--fusion-sxs-brand:500px;width:var(--fusion-sxs-brand)}}`)
 	})
 
 	test('Stringification: Utils + Local Tokens', () => {
@@ -247,7 +247,7 @@ describe('Basic', () => {
 		const cssString1of1 = getCssText()
 
 		expect(className1of1).toBe('c-brAtkJ')
-		expect(cssString1of1).toBe(`--sxs{--sxs:2 c-brAtkJ}@media{.c-brAtkJ{---blur:test;-webkit-backdrop-filter:var(---blur);backdrop-filter:var(---blur)}}`)
+		expect(cssString1of1).toBe(`--sxs{--sxs:2 c-brAtkJ}@media{.c-brAtkJ{--sxs-blur:test;-webkit-backdrop-filter:var(--sxs-blur);backdrop-filter:var(--sxs-blur)}}`)
 	})
 
 	test('Theme', () => {

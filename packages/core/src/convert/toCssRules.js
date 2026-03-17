@@ -5,7 +5,7 @@ import { toResolvedMediaQueryRanges } from './toResolvedMediaQueryRanges.js'
 import { toResolvedSelectors } from './toResolvedSelectors.js'
 import { toSizingValue } from './toSizingValue.js'
 import { toTailDashed } from './toTailDashed.js'
-import { toTokenizedValue } from './toTokenizedValue.js'
+import { toTokenizedValue, NAMESPACE } from './toTokenizedValue.js'
 
 /** Comma matcher outside rounded brackets. */
 const comma = /\s*,\s*(?![^()]*\))/
@@ -109,7 +109,7 @@ export const toCssRules = (
 						if (currentRule === undefined) currentRule = [[], selectors, conditions]
 
 						/** CSS left-hand side value, which may be a specially-formatted custom property. */
-						name = !isAtRuleLike && name.charCodeAt(0) === 36 ? `--${toTailDashed(config.prefix)}${name.slice(1).replace(/\$/g, '-')}` : name
+						name = !isAtRuleLike && name.charCodeAt(0) === 36 ? `--${toTailDashed(config.prefix)}${NAMESPACE}${name.slice(1).replace(/\$/g, '-')}` : name
 
 						/** CSS right-hand side value, which may be a specially-formatted custom property. */
 						data = (
