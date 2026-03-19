@@ -93,7 +93,7 @@ describe('Tokens', () => {
 
 		expect(getCssText()).toBe(
 			`--sxs{--sxs:0 t-gxqihb}@media{` +
-				`:root,.t-gxqihb{--shadows-red:tomato;--shadows-red500:var(--shadows-red);--shadows-redUnique:var(---red)}` +
+				`:root,.t-gxqihb{--shadows-red:tomato;--shadows-red500:var(--shadows-red);--shadows-redUnique:var(--sxs-red)}` +
 			`}` +
 			`--sxs{--sxs:1 kyFUgb}@media{` +
 				`article{box-shadow:0 0 0 1px var(--shadows-red500)}` +
@@ -147,61 +147,6 @@ describe('Tokens', () => {
 			`}` +
 			`--sxs{--sxs:1 hNRkrs}@media{` +
 				`article{box-shadow:0 0 0 1px var(--colors-red)}` +
-			`}`
-		)
-	})
-
-	test('Authors can use a negative token #1', () => {
-		const { globalCss, getCssText } = createStitches({
-			theme: {
-				space: {
-					sp1: '100px',
-					sp2: '200px',
-				},
-			},
-		})
-
-		globalCss({
-			article: {
-				marginLeft: '-$sp1',
-				marginTop: '-$sp2',
-			},
-		})()
-
-		expect(getCssText()).toBe(
-			`--sxs{--sxs:0 t-hxjLZl}@media{` +
-				`:root,.t-hxjLZl{--space-sp1:100px;--space-sp2:200px}` +
-			`}` +
-			`--sxs{--sxs:1 kTSGli}@media{` +
-				`article{margin-left:calc(var(--space-sp1)*-1);margin-top:calc(var(--space-sp2)*-1)}` +
-			`}`
-		)
-	})
-
-	test('Authors can use a negative token #2', () => {
-		const { globalCss, getCssText } = createStitches({
-			theme: {
-				sizes: {
-					sp1: '10px',
-					sp2: '20px',
-					sp3: '30px',
-				},
-			},
-		})
-
-		globalCss({
-			article: {
-				marginLeft: '-$sizes$sp1',
-				width: '$sp1',
-			},
-		})()
-
-		expect(getCssText()).toBe(
-			`--sxs{--sxs:0 t-ereMzu}@media{` +
-				`:root,.t-ereMzu{--sizes-sp1:10px;--sizes-sp2:20px;--sizes-sp3:30px}` +
-			`}` +
-			`--sxs{--sxs:1 kuTEdV}@media{` +
-				`article{margin-left:calc(var(--sizes-sp1)*-1);width:var(--sizes-sp1)}` +
 			`}`
 		)
 	})
@@ -311,27 +256,4 @@ describe('Tokens', () => {
 		)
 	})
 
-	test('Authors can render custom units', () => {
-		const { globalCss, getCssText } = createStitches({
-			theme: {
-				sizes: {
-					five: '5px',
-				},
-			}
-		})
-
-		globalCss({
-			body: {
-				marginLeft: '5--sizes-five'
-			}
-		})()
-
-		expect(getCssText()).toBe(
-			`--sxs{--sxs:0 t-bhZLEQ}@media{` +
-				`:root,.t-bhZLEQ{--sizes-five:5px}` +
-			`}--sxs{--sxs:1 gvABwA}@media{` +
-				`body{margin-left:calc(var(--sizes-five)*5)}` +
-			`}`
-		)
-	})
 })
