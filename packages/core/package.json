@@ -1,6 +1,6 @@
 {
   "name": "@sigmacomputing/stitches-core",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "The modern CSS-in-JS library",
   "type": "module",
   "main": "dist/index.cjs",
@@ -26,13 +26,27 @@
       "require": "./dist/index.global.js",
       "import": "./dist/index.global.js"
     },
-    "./types/config": { "types": "./types/config.d.ts" },
-    "./types/css": { "types": "./types/css.d.ts" },
-    "./types/css-util": { "types": "./types/css-util.d.ts" },
-    "./types/stitches": { "types": "./types/stitches.d.ts" },
-    "./types/styled-component": { "types": "./types/styled-component.d.ts" },
-    "./types/theme": { "types": "./types/theme.d.ts" },
-    "./types/util": { "types": "./types/util.d.ts" }
+    "./types/config": {
+      "types": "./types/config.d.ts"
+    },
+    "./types/css": {
+      "types": "./types/css.d.ts"
+    },
+    "./types/css-util": {
+      "types": "./types/css-util.d.ts"
+    },
+    "./types/stitches": {
+      "types": "./types/stitches.d.ts"
+    },
+    "./types/styled-component": {
+      "types": "./types/styled-component.d.ts"
+    },
+    "./types/theme": {
+      "types": "./types/theme.d.ts"
+    },
+    "./types/util": {
+      "types": "./types/util.d.ts"
+    }
   },
   "files": [
     "dist/*.cjs",
