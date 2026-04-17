@@ -228,6 +228,23 @@ describe('Basic', () => {
 		expect(cssString1of1).toBe(`--sxs{--sxs:2 fusion-c-elRGCe}@media{.fusion-c-elRGCe{--fusion-sxs-brand:500px;width:var(--fusion-sxs-brand)}}`)
 	})
 
+	test('Functionality of stringification — Local custom scales', () => {
+		const { css, getCssText } = createStitches({
+			prefix: 'fusion',
+		})
+
+		const component1of1 = css({
+			$common$offset: '500px',
+			width: '$common$offset',
+		})
+
+		const className1of1 = `${component1of1()}`
+		const cssString1of1 = getCssText()
+
+		expect(className1of1).toBe('fusion-c-beUcvW')
+		expect(cssString1of1).toBe(`--sxs{--sxs:2 fusion-c-beUcvW}@media{.fusion-c-beUcvW{--fusion-common-offset:500px;width:var(--fusion-common-offset)}}`)
+	})
+
 	test('Stringification: Utils + Local Tokens', () => {
 		const { css, getCssText } = createStitches({
 			utils: {
