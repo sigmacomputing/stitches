@@ -109,7 +109,14 @@ export const toCssRules = (
 						if (currentRule === undefined) currentRule = [[], selectors, conditions]
 
 						/** CSS left-hand side value, which may be a specially-formatted custom property. */
-						name = !isAtRuleLike && name.charCodeAt(0) === 36 ? `--${toTailDashed(config.prefix)}${NAMESPACE}${name.slice(1).replace(/\$/g, '-')}` : name
+						if (!isAtRuleLike && name.charCodeAt(0) === 36) {
+							const isLocalToken = name.charCodeAt(1) === 36;
+							name = '--'.concat(
+								toTailDashed(config.prefix),
+								isLocalToken ? NAMESPACE : '',
+								name.slice(1).replace(/\$/g, '-')
+							);
+						}
 
 						/** CSS right-hand side value, which may be a specially-formatted custom property. */
 						data = (
