@@ -25,6 +25,15 @@ const isSheetAccessible = (/** @type {CSSStyleSheet} */ sheet) => {
 	}
 }
 
+/** Whether `root` supports constructable stylesheets (`new CSSStyleSheet()` + `adoptedStyleSheets`). */
+const supportsConstructedStylesheets = (/** @type {DocumentOrShadowRoot} */ root) => {
+	try {
+		return Array.isArray(Object(root).adoptedStyleSheets) && typeof CSSStyleSheet !== 'undefined' && 'replaceSync' in CSSStyleSheet.prototype
+	} catch (e) {
+		return false
+	}
+}
+
 export const createSheet = (/** @type {DocumentOrShadowRoot} */ root) => {
 	/** @type {SheetGroup} Object hosting the hydrated stylesheet. */
 	let groupSheet
@@ -71,8 +80,8 @@ export const createSheet = (/** @type {DocumentOrShadowRoot} */ root) => {
 			}
 		}
 
-		/** @type {StyleSheetList} */
-		const sheets = Object(root).styleSheets || []
+		/** @type {(CSSStyleSheet)[]} Stylesheets from `<style>`/`<link>` elements, plus any adopted stylesheets. */
+		const sheets = [...(Object(root).styleSheets || []), ...(Object(root).adoptedStyleSheets || [])]
 
 		// iterate all stylesheets until a hydratable stylesheet is found
 		for (const sheet of sheets) {
@@ -139,6 +148,15 @@ export const createSheet = (/** @type {DocumentOrShadowRoot} */ root) => {
 				if (!root) {
 					return createCSSMediaRule('', 'text/css')
 				}
+
+				// constructable stylesheets aren't gated by CSP style-src, since no <style>
+				// element is ever inserted into the DOM — prefer them when available.
+				if (supportsConstructedStylesheets(root)) {
+					const adoptedSheet = new CSSStyleSheet()
+					root.adoptedStyleSheets = [...root.adoptedStyleSheets, adoptedSheet]
+					return adoptedSheet
+				}
+
 				const styleEl = document.createElement('style')
 				const nonce = getNonce()
 				if (nonce) {
